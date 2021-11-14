@@ -14,18 +14,12 @@ import java.util.*;
 public class CreateDB {
 
 
-  public static final String propsFile = "F:\\git\\github\\youtube_search_video\\database2\\src\\database2\\jdbc.properties";
+  public static final String propsFile = "F:\\git\\github\\youtube_search_video\\jdbc.properties";
 
   /**
-   * Establishes a connection to the database.
-   *
-   * The details of which driver to use, which database to access
-   * and the username and password to use are provided via a
-   * properties file, rather than being hard-coded.
+   * using the jdbc.properties file to connect mysql database
    *
    * @return Connection object representing the connection
-   * @throws IOException if properties file cannot be accessed
-   * @throws SQLException if connection fails
    */
   public static Connection getConnection() throws IOException, SQLException
   {
@@ -55,10 +49,9 @@ public class CreateDB {
 
 
   /**
-   * Creates a table to hold the data.
+   * Creates a table call videolist to record the info.
    *
    * @param database connection to database
-   * @throws SQLException if table creation fails
    */
 
   public static void createTable(Connection database) throws SQLException
@@ -68,16 +61,16 @@ public class CreateDB {
 
     // Drop existing table, if present
     try {
-      statement.executeUpdate("DROP TABLE videoList");
+      statement.executeUpdate("DROP TABLE videolist");
     }
     catch (SQLException error) {
     	
     }
 
     // Create a videoList table
+    // channel_id: channel id
     // video_id: video id
     // video_name: title of video
-    // cover_url: the url of cover image of video
     statement.executeUpdate("CREATE TABLE videolist ("
     		              + "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,"
     		              + "channel_id VARCHAR(35) NOT NULL,"
@@ -90,12 +83,10 @@ public class CreateDB {
 
 
   /**
-   * Adds data to the table.
+   * Adds data to the table "videolist".
    *
-   * @param in source of data
-   * @param database connection to database
-   * @throws IOException if there is a problem reading from the file
-   * @throws SQLException if insertion fails for any reason
+   * @param in: source of data
+   * @param databas:e connection to database
    */
 
   public static void addData(BufferedReader in, Connection database)
@@ -110,7 +101,7 @@ public class CreateDB {
 
     // Loop over input data, inserting it into table...
     while (true) {
-      // Obtain video_id, video_name and cover_url from input file
+      // Obtain channel_id, video_id and video_name from input file
       String line = in.readLine();
       if (line == null)
         break;
@@ -120,7 +111,6 @@ public class CreateDB {
       String video_name = parser.nextToken();
 
       // Insert data into table
-
       statement.setString(1, channel_id);
       statement.setString(2, video_id);
       statement.setString(3, video_name);
@@ -135,7 +125,6 @@ public class CreateDB {
   /**
    * main function
    */
-
   public static void main(String[] argv)
   {
     if (argv.length > 0) {
@@ -147,7 +136,7 @@ public class CreateDB {
     Connection database = null;
 
     try {
-      BufferedReader input = new BufferedReader(new FileReader("F:\\git\\github\\youtube_search_video\\videoList.txt"));
+      BufferedReader input = new BufferedReader(new FileReader("F:\\git\\github\\youtube_search_video\\database2\\src\\database2\\videoList.txt"));
       database = getConnection();
       createTable(database);
       addData(input, database);
