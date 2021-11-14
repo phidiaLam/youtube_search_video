@@ -147,7 +147,7 @@ public class CreateDB {
     Connection database = null;
 
     try {
-      BufferedReader input = new BufferedReader(new FileReader("F:\\git\\github\\youtube_search_video\\database2\\src\\database2\\videoList.txt"));
+      BufferedReader input = new BufferedReader(new FileReader("F:\\git\\github\\youtube_search_video\\videoList.txt"));
       database = getConnection();
       createTable(database);
       addData(input, database);
