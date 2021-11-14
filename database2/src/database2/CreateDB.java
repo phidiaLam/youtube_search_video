@@ -71,7 +71,7 @@ public class CreateDB {
       statement.executeUpdate("DROP TABLE videoList");
     }
     catch (SQLException error) {
-    	System.err.println("drop table videoList failed");
+    	
     }
 
     // Create a videoList table
@@ -80,9 +80,10 @@ public class CreateDB {
     // cover_url: the url of cover image of video
     statement.executeUpdate("CREATE TABLE videolist ("
     		              + "id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,"
+    		              + "channel_id VARCHAR(35) NOT NULL,"
                           + "video_id VARCHAR(15) NOT NULL,"
-                          + "video_name VARCHAR(150) NOT NULL,"
-                          + "cover_url VARCHAR(80) NOT NULL)");
+                          + "video_name VARCHAR(150) NOT NULL"
+                          + ")CHARSET=utf8");
 
     statement.close();
   }
@@ -103,7 +104,7 @@ public class CreateDB {
     // Prepare statement used to insert data
     PreparedStatement statement =
      database.prepareStatement("INSERT INTO videolist "
-     						+ "(video_id, video_name, cover_url)"
+     						+ "(channel_id, video_id, video_name)"
      						+ "VALUES"
      						+ "(?,?,?)");
 
@@ -114,15 +115,15 @@ public class CreateDB {
       if (line == null)
         break;
       StringTokenizer parser = new StringTokenizer(line,",");
+      String channel_id= parser.nextToken();
       String video_id = parser.nextToken();
       String video_name = parser.nextToken();
-      String cover_url = parser.nextToken();
 
       // Insert data into table
 
-      statement.setString(1, video_id);
-      statement.setString(2, video_name);
-      statement.setString(3, cover_url);
+      statement.setString(1, channel_id);
+      statement.setString(2, video_id);
+      statement.setString(3, video_name);
       statement.executeUpdate();
     }
 
