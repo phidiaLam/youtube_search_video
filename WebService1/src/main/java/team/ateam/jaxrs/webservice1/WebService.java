@@ -21,11 +21,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import com.sun.jersey.api.container.httpserver.HttpServerFactory;
-import com.sun.net.httpserver.HttpServer;
-
+@Path("/one")
 public class WebService {
-	public static final String propsFile = "//Users//yingningchen//Downloads//jdbc.properties";
+	public static final String propsFile = "D://jdbc.properties";
 	
     public static Connection getConnection() throws IOException, SQLException
     {
@@ -74,7 +72,7 @@ public class WebService {
     @GET
     @Path("/videoid/{video_id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public JSONArray addJSON(@PathParam("video_id") double video_id) {
+    public String addJSON(@PathParam("video_id") String video_id) {
         Connection connection = null;
         List<String> result= new ArrayList();
         JSONArray returnJson = new JSONArray();
@@ -82,25 +80,30 @@ public class WebService {
         try {
             connection = getConnection();
             result=findNames(temp, connection);
+            System.out.println("result");
             for(int i =0; i < result.size() ; i++){
                 String[] t;
                 String delimeter = "@"; 
                 t = result.get(i).split(delimeter); 
+                System.out.println(t[0]);
+                System.out.println(t[1]);
+                System.out.println(t[2]);
                 JSONObject singleJson = new JSONObject();
                 for(int j =0; j < t.length ; j++){
-                    singleJson.put("id", i);
                     singleJson.put("video_id", t[0]);
                     singleJson.put("channel_id", t[1]);
                     singleJson.put("channel_name", t[2]);
                  }
-            	singleJson.put("Object", returnJson);
+                returnJson.put(singleJson);
             }
+            
 
         }
         catch (Exception error) {
           error.printStackTrace();
         }
-        return returnJson;
+        System.out.println(returnJson.length());
+        return returnJson.toString();
     }
 
 }

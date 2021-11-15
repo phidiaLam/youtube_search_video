@@ -6,7 +6,7 @@ import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 
 public class WebServiceStartUp {
-    static final String BASE_URI = "http://localhost:6666/webservice1/";
+    static final String BASE_URI = "http://localhost:9998/webservice1/";
     
     public static void main(String[] args) {
         try {
