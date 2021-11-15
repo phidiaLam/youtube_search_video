@@ -76,14 +76,16 @@ public class WebService {
         Connection connection = null;
         List<String> result= new ArrayList();
         JSONArray returnJson = new JSONArray();
-        String temp = "a6AHVbfyQVs";
+        String[] keyvids;
+        String delimeter = "@"; 
+        keyvids = video_id.split(delimeter); 
         try {
+        	for(int a=0; a<keyvids.length;a++) {
             connection = getConnection();
-            result=findNames(temp, connection);
+            result=findNames(keyvids[a], connection);
             System.out.println("result");
             for(int i =0; i < result.size() ; i++){
                 String[] t;
-                String delimeter = "@"; 
                 t = result.get(i).split(delimeter); 
                 System.out.println(t[0]);
                 System.out.println(t[1]);
@@ -93,11 +95,12 @@ public class WebService {
                     singleJson.put("video_id", t[0]);
                     singleJson.put("channel_id", t[1]);
                     singleJson.put("channel_name", t[2]);
-                 }
+                 
+                }
                 returnJson.put(singleJson);
             }
             
-
+        	}
         }
         catch (Exception error) {
           error.printStackTrace();
