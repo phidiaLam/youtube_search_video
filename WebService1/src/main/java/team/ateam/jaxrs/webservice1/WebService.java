@@ -23,7 +23,7 @@ import org.json.JSONTokener;
 
 @Path("/one")
 public class WebService {
-	public static final String propsFile = "D://jdbc.properties";
+	public static final String propsFile = "F:\\git\\github\\youtube_search_video\\jdbc.properties";
 	
     public static Connection getConnection() throws IOException, SQLException
     {
