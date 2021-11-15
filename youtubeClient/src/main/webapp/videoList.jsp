@@ -28,74 +28,31 @@
 	
 	<%-- return json text in web services 2 --%>
 	<% String jsontext = jsonText(idList); %>
-	<%= getInfoOfVideo(jsontext) %>
+	<%  String infoString = getInfoOfVideo(jsontext); 
+	    String[] infos = infoString.split("#");
+	%>
+	<div class="title">Video List</div>
 	<div class="out-container">
-		<div class="row">
-			<div class="video-info">
-				<img class="info-img" src="https://i.ytimg.com/vi/m-QVxS8TvDo/hqdefault.jpg">
-				<div class="info-title">Stephen Colbert And Jeff Goldblum Try On Each Others Glasses</div>
-			 	<a herf="">
-			 		<button class="info-detail">details</button>
-			 	</a>
+	<% for(int i = 0; i < infos.length; i++) {
+		String[] info = infos[i].split("@");%>
+		<%if ((i % 5) == 0 && i != 0) { %>
 			</div>
-			<div class="video-info">
-				<img class="info-img" src="">
-				<div class="info-title"></div>
-			 	<div class="info-channel"></div>
-			 	<button class=“info-detail”>
-			 		<a herf=""></a>
-			 	</button>
-			</div>
-			<div class="video-info">
-				<img class="info-img" src="">
-				<div class="info-title"></div>
-			 	<div class="info-channel"></div>
-			 	<button class=“info-detail”>
-			 		<a herf=""></a>
-			 	</button>
-			</div>
-			<div class="video-info">
-				<img class="info-img" src="">
-				<div class="info-title"></div>
-			 	<div class="info-channel"></div>
-			 	<button class=“info-detail”>
-			 		<a herf=""></a>
-			 	</button>
-			</div>
-			<div class="video-info">
-				<img class="info-img" src="">
-				<div class="info-title"></div>
-			 	<div class="info-channel"></div>
-			 	<button class=“info-detail”>
-			 		<a herf=""></a>
-			 	</button>
-			</div>
-		</div>
-		<div class="row">
-			<div class="video-info">
-				<img class="info-img" src="">
-				<div class="info-title"></div>
-			 	<div class="info-channel"></div>
-			 	<button class=“info-detail”>
-			 		<a herf=""></a>
-			 	</button>
-			</div>
-			<div class="video-info">
-				<img class="info-img" src="">
-				<div class="info-title"></div>
-			 	<div class="info-channel"></div>
-			 	<button class=“info-detail”>
-			 		<a herf=""></a>
-			 	</button>
-			</div>
-			<div class="video-info">
-				<img class="info-img" src="">
-				<div class="info-title"></div>
-			 	<div class="info-channel"></div>
-			 	<button class=“info-detail”>
-			 		<a herf=""></a>
-			 	</button>
-			</div>
+		<% } %>
+		<%if ((i % 5) == 0) { %>
+			<div class="row">
+		<% } %>
+				<div class="video-info">
+					<img class="info-img" src="<%= info[2] %>">
+					<div class="info-title"><%= info[0] %></div>
+					<div class="info-id" hidden><%= info[1] %></div>
+				 	<a href="/youtubeClient/videoDetail.jsp?videoId=<%= info[1] %>">
+				 		<button class="info-detail">details</button>
+				 	</a>
+				</div>
+		<%if (i == infos.length - 1) { %>
+			<div class="row">
+		<% } %>
+	<% } %>	
 	</div>
 	
 	<%-- get the json text from web service2 api --%>
@@ -118,20 +75,39 @@
   		
 	    private String getInfoOfVideo(String json) {
 	    	JSONObject obj= new JSONObject(json);
+	    	JSONArray item = obj.getJSONArray("item");
+	    	String info = "";
+	    	for (int i = 0; i < item.length(); i++) {
+	    		JSONObject itemArray = item.getJSONObject(i); 
+	    		JSONArray infoArray = itemArray.getJSONArray("info");
+	    		for (int j = 0; j < infoArray.length(); j++) {
+	    			JSONObject InfoObject = infoArray.getJSONObject(j);
+	    			String videoName = InfoObject.getString("videoName"); 
+	    			String videoId = InfoObject.getString("videoId"); 
+	    			String CoverImg = InfoObject.getString("CoverImg"); 
+	    			info += videoName + "@" + videoId + "@" + CoverImg + "#";
+	    		}
+	    	}
 	    	
-	    	String[] a = new String[5];
+	    	info.substring(0, info.length()-1);
+	    	
 	    	return info;
 	    }
     %>
 </body>
 <style type="text/css">
+.title {
+	font-size: 60px;
+	margin-top: 40px;
+	text-align:center;
+}
 .out-container {
 	width: 80%;
 	margin-left:10%;
 }
 
 .row {
-	margin-top: 30px;
+	margin-top: 50px;
 	display: flex;
 	justify-content: flex-start;
 }
@@ -139,7 +115,7 @@
 .video-info {
 	margin-left:calc((25%-10px)/5);
 	width: 15%;
-	height: 240px;
+	height: 16vw;
 	border: 1px solid #aeb2b6;
 	border-radius: 10px;
 }
@@ -159,9 +135,7 @@
 .info-detail {
 	width: 50px;
 	height: 20px;
-	position: relative;
-    bottom: 0px;
-    right: -125px;
+	margin-left: 67%;
     border-radius: 3px;
     border: none;
     background-color: #b2b9be; 
