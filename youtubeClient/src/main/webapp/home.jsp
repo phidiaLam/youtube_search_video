@@ -7,7 +7,15 @@
 <title>home</title>
 </head>
 <body>
+<font size=+10>
+<p>Please input the id of your interested videos. </p>
+</font>
 <font size=+2>
+Video ids: <input type="text" name="videos" />
+<br/>
+Video ids: <input type="text" name="name">
+<input type="submit" value="Submit" />
+</form>
 <%
 java.util.Date now = new java.util.Date();
 %>
