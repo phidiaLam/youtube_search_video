@@ -91,7 +91,7 @@
 	    	
 	    	info.substring(0, info.length()-1);
 	    	
-	    	return info;
+	    	return "11";
 	    }
     %>
 </body>

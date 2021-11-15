@@ -62,7 +62,8 @@ public class WebService {
     		    while (results.next()) {
     		      String channel_id = results.getString("channel_id");
     		      String channel_name = results.getString("channel_name");
-    		      selectResults.add(video_id +'@'+ channel_id +'@' +channel_name);
+    		      String profile_pic = results.getString("profile_pic");
+    		      selectResults.add(video_id +'@'+ channel_id +'@' +channel_name +'@'+profile_pic);
     		    }
     		    statement.close();
     		    return selectResults;
@@ -83,19 +84,15 @@ public class WebService {
         	for(int a=0; a<keyvids.length;a++) {
             connection = getConnection();
             result=findNames(keyvids[a], connection);
-            System.out.println("result");
             for(int i =0; i < result.size() ; i++){
                 String[] t;
                 t = result.get(i).split(delimeter); 
-                System.out.println(t[0]);
-                System.out.println(t[1]);
-                System.out.println(t[2]);
                 JSONObject singleJson = new JSONObject();
                 for(int j =0; j < t.length ; j++){
                     singleJson.put("video_id", t[0]);
                     singleJson.put("channel_id", t[1]);
                     singleJson.put("channel_name", t[2]);
-                 
+                    singleJson.put("profile_picture", t[3]);
                 }
                 returnJson.put(singleJson);
             }
@@ -105,7 +102,6 @@ public class WebService {
         catch (Exception error) {
           error.printStackTrace();
         }
-        System.out.println(returnJson.length());
         return returnJson.toString();
     }
 
