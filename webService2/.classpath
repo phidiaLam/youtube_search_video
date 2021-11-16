@@ -13,18 +13,17 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jackson-core-asl-1.9.2.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jackson-jaxrs-1.9.2.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jackson-mapper-asl-1.9.2.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jackson-xc-1.9.2.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jersey-client-1.19.1.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jersey-core-1.19.1.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jersey-json-1.19.1.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jersey-server-1.19.1.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jersey-servlet-1.19.1.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jettison-1.1.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/jersey-jars-intellij/jsr311-api-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/mysql-connector-java-8.0.26.jar"/>
-	<classpathentry kind="lib" path="D:/Onedriveleeds/OneDrive - University of Leeds/Level3S1/Distributed System/jar/json-20210307.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jackson-xc-1.9.2.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jersey-client-1.19.1.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jersey-core-1.19.1.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jersey-json-1.19.1.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jersey-server-1.19.1.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jersey-servlet-1.19.1.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/json-20210307.jar"/>
+	<classpathentry kind="lib" path="F:/git/github/youtube_search_video/jersey_jar/jsr311-api-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

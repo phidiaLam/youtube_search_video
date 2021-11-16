@@ -48,10 +48,10 @@ function chk(){
 <div class="channel">
 		<table border="1">
 		<tr class="header">
-		<td></td>
-		<td>Video Ids</td>
-		<td>Channel PIC</td>
-		<td>Channel Name</td>
+			<td></td>
+			<td>Video Ids</td>
+			<td>Channel PIC</td>
+			<td>Channel Name</td>
 		</tr>
 			
 				<%
@@ -120,6 +120,7 @@ function chk(){
 		return jsontext;
 	}
 
+	// get from web service, and get response json text
 	private String getOutputAsJson(WebResource service) {
 		return service.accept(MediaType.APPLICATION_JSON).get(String.class);
 	}
