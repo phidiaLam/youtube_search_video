@@ -27,26 +27,21 @@
 		String detail = getDetailOfVideo(json);
 	%>
 	<h1>Video Detail</h1>
+	<%  String[] videoinfo;
+    	videoinfo = detail.split("@"); 	
+	
+	%>
 	<div class="out-container">
 		<div class="flex">
 			<div class="img-space">
-				<img src="https://i.ytimg.com/vi/Ks-_Mh1QhMc/hqdefault.jpg">
+				<img src=<%=videoinfo[0] %>>
 			</div>
 			<div class="detail-space">
-				<div class="title"><span class="key">Title:</span> <span>Your body language may shape who you are | Amy Cuddy</span></div>
-				<div class="description"><span class="key">Description:</span> <span>Body language affects how others see us, but it may also change how we see ourselves. Social psychologist Amy Cuddy argues that "power posing" -- standing in a posture of confidence, even when we don't feel confident -- can boost feelings of confidence, and might have an impact on our chances for success. (Note: Some of the findings presented in this talk have been referenced in an ongoing debate among social scientists about robustness and reproducibility. Read Amy Cuddy's response here: http://ideas.ted.com/inside-the-debate-about-power-posing-a-q-a-with-amy-cuddy/)
-
-Get TED Talks recommended just for you! Learn more at https://www.ted.com/signup.
-
-The TED Talks channel features the best talks and performances from the TED Conference, where the world's leading thinkers and doers give the talk of their lives in 18 minutes (or less). Look for talks on Technology, Entertainment and Design -- plus science, business, global issues, the arts and more.
-
-Follow TED on Twitter: http://www.twitter.com/TEDTalks
-Like TED on Facebook: https://www.facebook.com/TED
-
-Subscribe to our channel: https://www.youtube.com/TED</span></div>
-				<div class="publish"><span class="key">Publish Time:</span> <span>2012-10-01T15:27:35Z</span></div>
+				<div class="title"><span class="key">Title:</span> <span><%=videoinfo[1] %></span></div>
+				<div class="description"><span class="key">Description:</span> <span><%=videoinfo[2] %></span></div>
+				<div class="publish"><span class="key">Publish Time:</span> <span><%=videoinfo[3] %></span></div>
 				<div class="info">
-					<span class="key">view counts:</span>&nbsp;<span>20446716</span>&nbsp;&nbsp;<span class="key">like counts:</span>&nbsp;<span>314199</span>&nbsp;&nbsp;<span class="key">dislike counts:</span>&nbsp;<span>5862</span>&nbsp;&nbsp;<span class="key">comment counts:</span>&nbsp;<span>8924</span>
+					<span class="key">view counts:</span>&nbsp;<span><%=videoinfo[4] %></span>&nbsp;&nbsp;<span class="key">like counts:</span>&nbsp;<span><%=videoinfo[5] %></span>&nbsp;&nbsp;<span class="key">dislike counts:</span>&nbsp;<span><%=videoinfo[6] %></span>&nbsp;&nbsp;<span class="key">comment counts:</span>&nbsp;<span><%=videoinfo[7] %></span>
 				</div>
 			</div>
 		</div>
@@ -84,15 +79,15 @@ Subscribe to our channel: https://www.youtube.com/TED</span></div>
 	    		String publishedAt = snippet.getString("publishedAt");
 	    		
 	    		JSONObject thumbnails = snippet.getJSONObject("thumbnails");
-	    		JSONObject maxres = thumbnails.getJSONObject("maxres");
-	    		String imgUrl = maxres.getString("url");
+	    		JSONObject high = thumbnails.getJSONObject("high");
+	    		String imgUrl = high.getString("url");
 	    		
 	    		String viewCount = statistics.getString("viewCount");
 	    		String likeCount = statistics.getString("likeCount");
 	    		String dislikeCount = statistics.getString("dislikeCount");
 	    		String commentCount = statistics.getString("commentCount");
 	    		
-	    		info += title + "@" + description + "@" + publishedAt + "@" + imgUrl + "@" + viewCount + "@" + likeCount + "@" + dislikeCount + "@" + commentCount;
+	    		info += imgUrl +"@" +title + "@" + description + "@" + publishedAt + "@" + viewCount + "@" + likeCount + "@" + dislikeCount + "@" + commentCount;
 	    	}
 	    	
 	    	info.substring(0, info.length()-1);
