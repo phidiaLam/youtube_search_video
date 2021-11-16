@@ -16,15 +16,62 @@
 <title>home</title>
 </head>
 <body>
-<font size=+10>
-<p>Please input the id of your interested videos. </p>
-</font>
-<font size=+2>
+<div class="maincon">
+
+<div class="reminder"><p>Please input the id of your interested video. </p></div>
+
+
 <form action="channelChoose.jsp" method="GET">
-Video ids: <input type="text" name="videos" />
-<br />
-<input type="submit" value="Submit" />
+<div class="search">
+Video ids: <input type="text" name="videos" class="video"/>
+<input type="submit" value="Submit" class="submit"/>
+</div>
 </form>
-</font>
+<div class="sugg">
+<p>If you wanna search for more than one video id, please connect with @.</p>
+<p>For example: GaLlQau3sDU@1WifEFI6eK8</p>
+</div>
+</div>
 </body>
+<style type="text/css">
+.maincon{
+	text-align: center;
+	background-color: #fff;
+	border-radius: 20px;
+	width: 500px;
+	height: 400px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+
+}
+.reminder{
+text-align:center;
+font-size:30px;
+
+}
+.search{
+font-size:20px;
+display:inline;
+}
+.video{
+height:20px;
+width:320px;
+}
+.sugg{
+color:blue;
+font-size:15px;
+}
+.submit{
+height:20px;
+background-color:#edf4ff;
+}
+.submit:hover {
+	background-color: #fddeff;
+}
+.submit:active {
+	background-color: #c1a5d6;
+}
+</style>
 </html>

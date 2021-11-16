@@ -20,7 +20,7 @@ import java.util.*;
 public class CreateDB {
 
 
-  public static final String propsFile = "F:\\git\\github\\youtube_search_video\\jdbc.properties";
+  public static final String propsFile = "..//jdbc.properties";
 
 
   /**
@@ -157,7 +157,7 @@ public static void main(String[] argv)
   Connection database = null;
 
   try {
-    BufferedReader input = new BufferedReader(new FileReader("C:\\Users\\29570\\Desktop\\channelList.txt"));
+    BufferedReader input = new BufferedReader(new FileReader(".//src//channelList.txt"));
     database = getConnection();
     createTable(database);
     addData(input, database);

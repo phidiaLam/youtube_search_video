@@ -14,7 +14,7 @@ import java.util.*;
 public class CreateDB {
 
 
-  public static final String propsFile = "F:\\git\\github\\youtube_search_video\\jdbc.properties";
+  public static final String propsFile = "..//jdbc.properties";
 
   /**
    * using the jdbc.properties file to connect mysql database
@@ -136,7 +136,7 @@ public class CreateDB {
     Connection database = null;
 
     try {
-      BufferedReader input = new BufferedReader(new FileReader("F:\\git\\github\\youtube_search_video\\database2\\src\\database2\\videoList.txt"));
+      BufferedReader input = new BufferedReader(new FileReader(".//src//database2//videoList.txt"));
       database = getConnection();
       createTable(database);
       addData(input, database);

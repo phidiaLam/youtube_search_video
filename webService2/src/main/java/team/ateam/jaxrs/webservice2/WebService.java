@@ -18,7 +18,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/two")
 public class WebService {
 
-	public static final String propsFile = "F:\\git\\github\\youtube_search_video\\jdbc.properties";
+	public static final String propsFile = "..//jdbc.properties";
 	
 	// id_list is multiple id's connected together and connect with @
     @GET
