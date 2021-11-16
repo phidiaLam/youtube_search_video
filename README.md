@@ -30,7 +30,7 @@ This project is using several video IDs to find the channels and the video infom
 1. if code cannot find path of `jdbc.properties`, change the path `jdbc.properties` in the code.
    - in the command line `9` of `webservice1`
    - in the command line `10` of `webservice2`
-2. using java to run the `WebServiceStartUp.java` in path `WebService1\src\main\java\team\ateam\jaxrs\wevservice1` and `WebService2\src\main\java\team\ateam\jaxrs\wevservice2`. Then this two webserivce run in port `9999` and `9998`
+2. using java to run the `WebServiceStartUp.java` in path `WebService1\src\main\java\team\ateam\jaxrs\wevservice1` and `WebService2\src\main\java\team\ateam\jaxrs\wevservice2`. Then this two webserivce run in port `9998` and `9999`
 
 #### Start the Client
 
@@ -42,7 +42,7 @@ This project is using several video IDs to find the channels and the video infom
    - run the tomcat.
    - input `127.0.0.1:8080/youtubeClinet/home.jsp` in web address bar start using client.
 
-#### Using CLient.
+#### Using Client.
 
 1. in `127.0.0.1:8080/youtubeClinet/home.jsp`, the video id list you can input as follow:
    ```
@@ -60,6 +60,8 @@ This project is using several video IDs to find the channels and the video infom
     a6AHVbfyQVs
    ```
     you can input like this `gNd5Zdc1voI@T4_ImSneNIE@kyfb8lGAveY` to input multiple video id.
+    **(PS: The home page only support correct input to redirect next page. (The input content must be in the list and with right format.)
+    The channelChoose page only redirect to next page correctly when you choose some channels. It can not redirect correctly when you choose nothing.)**
 2. then, `127.0.0.1:8080/youtubeClinet/channelChoose.jsp` will show the channel according to video ids which you gave. You can choose several channels and submit.
 3. `127.0.0.1:8080/youtubeClinet/videoList.jsp` page will show the video cover image and title according to channel ids which you gave.
 4. final, click `details` button to go to `127.0.0.1:8080/youtubeClinet/videoDetail.jsp` page. This page will show cover image, title, descript, pushlish time, view counts, like counts, dislike counts and commend counts to you.
