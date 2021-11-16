@@ -26,10 +26,11 @@
 	<%  String json = jsonText(videoId); 
 		String detail = getDetailOfVideo(json);
 	%>
+	
+	<%-- split string to each video info --%>
 	<h1>Video Detail</h1>
 	<%  String[] videoinfo;
-    	videoinfo = detail.split("@"); 	
-	
+    	videoinfo = detail.split("@");
 	%>
 	<div class="out-container">
 		<div class="flex">
@@ -49,25 +50,30 @@
 
 	<%-- get the json text from web service api --%>
 	<%!
+		// base url of api
 		static final String REST_URI = "https://youtube.googleapis.com/youtube/v3/videos";
 	    
   		private String jsonText(String videoId) throws MalformedURLException {
   	        ClientConfig config = new DefaultClientConfig();
   	        Client client = Client.create(config);
   	        WebResource service = client.resource(REST_URI);
+  	        // add the param
   	      	WebResource videoDetailService = service.queryParam("part","snippet,statistics").queryParam("id",videoId).queryParam("key","AIzaSyDMAmpH7Yh0fPfMvYcXPUwrGeb1HKo5W6g");
   	        String jsontext = getOutputAsJson(videoDetailService);
   	        return jsontext;
       	}
   		
+  		// get from web service, and get response json text
   		private String getOutputAsJson(WebResource service) {
   	        return service.accept(MediaType.APPLICATION_JSON).get(String.class);
   	    }
   		
 	    private String getDetailOfVideo(String json) {
+	    	// parse json text to each json object and array
 	    	JSONObject obj= new JSONObject(json);
 	    	JSONArray item = obj.getJSONArray("items");
 	    	String info = "";
+	    	// using the for loop, to get infomation in each array
 	    	for (int i = 0; i < item.length(); i++) {
 	    		JSONObject itemArray = item.getJSONObject(i); 
 	    		
@@ -87,7 +93,8 @@
 	    		String dislikeCount = statistics.getString("dislikeCount");
 	    		String commentCount = statistics.getString("commentCount");
 	    		
-	    		info += imgUrl +"@" +title + "@" + description + "@" + publishedAt + "@" + viewCount + "@" + likeCount + "@" + dislikeCount + "@" + commentCount;
+	    		// joint each info to a string, add symbol "@" between each of them to connect
+	    		info += imgUrl +"@" +title + "@" + description + "@" + publishedAt + "@" + viewCount + "@" + likeCount + "@" + dislikeCount + "@" + commentCount + "#";
 	    	}
 	    	
 	    	info.substring(0, info.length()-1);

@@ -16,22 +16,20 @@
 <title>home</title>
 </head>
 <body>
-<div class="maincon">
-
-<div class="reminder"><p>Please input the id of your interested video. </p></div>
-
-
-<form action="channelChoose.jsp" method="GET">
-<div class="search">
-Video ids: <input type="text" name="videos" class="video"/>
-<input type="submit" value="Submit" class="submit"/>
-</div>
-</form>
-<div class="sugg">
-<p>If you wanna search for more than one video id, please connect with @.</p>
-<p>For example: GaLlQau3sDU@1WifEFI6eK8</p>
-</div>
-</div>
+	<!-- use form to set "GET" request -->
+	<div class="maincon">
+		<div class="reminder"><p>Please input the id of your interested video. </p></div>
+		<form action="channelChoose.jsp" method="GET">
+			<div class="search">
+				Video ids: <input type="text" name="videos" class="video"/>
+				<input type="submit" value="Submit" class="submit"/>
+			</div>
+		</form>
+		<div class="sugg">
+			<p>If you wanna search for more than one video id, please connect with @.</p>
+			<p>For example: GaLlQau3sDU@1WifEFI6eK8</p>
+		</div>
+	</div>
 </body>
 <style type="text/css">
 .maincon{

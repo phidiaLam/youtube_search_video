@@ -69,6 +69,7 @@
   	        return jsontext;
       	}
   		
+  		// get from web service, and get response json text
   		private String getOutputAsJson(WebResource service) {
   	        return service.accept(MediaType.APPLICATION_JSON).get(String.class);
   	    }
@@ -77,9 +78,11 @@
 	    	JSONObject obj= new JSONObject(json);
 	    	JSONArray item = obj.getJSONArray("item");
 	    	String info = "";
+	    	// get info from each channel
 	    	for (int i = 0; i < item.length(); i++) {
 	    		JSONObject itemArray = item.getJSONObject(i); 
 	    		JSONArray infoArray = itemArray.getJSONArray("info");
+	    		// get info from each video
 	    		for (int j = 0; j < infoArray.length(); j++) {
 	    			JSONObject InfoObject = infoArray.getJSONObject(j);
 	    			String videoName = InfoObject.getString("videoName"); 
@@ -89,6 +92,7 @@
 	    		}
 	    	}
 	    	
+	    	// delete last symbol "#"
 	    	info.substring(0, info.length()-1);
 	    	
 	    	return info;
