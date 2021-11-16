@@ -55,7 +55,8 @@
   	        ClientConfig config = new DefaultClientConfig();
   	        Client client = Client.create(config);
   	        WebResource service = client.resource(REST_URI);
-  	      	WebResource videoDetailService = service.queryParam("part","snippet,statistics").queryParam("id",videoId).queryParam("key","AIzaSyDMAmpH7Yh0fPfMvYcXPUwrGeb1HKo5W6g");
+  	      	WebResource videoDetailService = service.queryParam("part","snippet,statistics")
+  	      			.queryParam("id",videoId).queryParam("key","AIzaSyDMAmpH7Yh0fPfMvYcXPUwrGeb1HKo5W6g");
   	        String jsontext = getOutputAsJson(videoDetailService);
   	        return jsontext;
       	}
@@ -87,7 +88,8 @@
 	    		String dislikeCount = statistics.getString("dislikeCount");
 	    		String commentCount = statistics.getString("commentCount");
 	    		
-	    		info += imgUrl +"@" +title + "@" + description + "@" + publishedAt + "@" + viewCount + "@" + likeCount + "@" + dislikeCount + "@" + commentCount;
+	    		info += imgUrl +"@" +title + "@" + description + "@" + publishedAt + "@" + viewCount + "@" 
+	    		+ likeCount + "@" + dislikeCount + "@" + commentCount;
 	    	}
 	    	
 	    	info.substring(0, info.length()-1);

@@ -38,10 +38,6 @@ public class WebService {
       String drivers = props.getProperty("jdbc.drivers");
       if (drivers != null)
         System.setProperty("jdbc.drivers", drivers);
-        // Setting standard system property jdbc.drivers
-        // is an alternative to loading the driver manually
-        // by calling Class.forName()
-
       // Obtain access parameters and use them to create connection
 
       String url = props.getProperty("jdbc.url");

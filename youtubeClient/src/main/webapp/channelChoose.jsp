@@ -17,9 +17,10 @@
 <script>
 function chk(){
     let obj=document.getElementsByName('cbx'); 
-    let s=''; 
+    let s='';
+    if(obj[i].checked){
     if(obj.length>=0)
-    	s=obj[0].value;
+    	s=obj[0].value;}
     for(var i=1; i<obj.length; i++){ 
         if(obj[i].checked){
         	if(obj[i].value!=obj[i-1].value)
