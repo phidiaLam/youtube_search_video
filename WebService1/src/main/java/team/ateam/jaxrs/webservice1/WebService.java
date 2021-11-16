@@ -47,12 +47,13 @@ public class WebService {
       return DriverManager.getConnection(url, user, password);
     }
 	
-    
+    //use database and mysql statement interact with database
     public static ArrayList<String> findNames(String video_id, Connection database)
     		   throws SQLException
     		  {
     			ArrayList<String> selectResults = new ArrayList<>();
     		    Statement statement = database.createStatement();
+    		    //search the corresponding channel in database use given video id
     		    ResultSet results = statement.executeQuery(
     		     "SELECT * FROM channellist WHERE video_id = '" + video_id + "'");
     		    while (results.next()) {
@@ -71,18 +72,22 @@ public class WebService {
     @Produces(MediaType.APPLICATION_JSON)
     public String addJSON(@PathParam("video_id") String video_id) {
         Connection connection = null;
+        //this service should return a json text
         List<String> result= new ArrayList();
         JSONArray returnJson = new JSONArray();
+        //multiple video id using @ to joint;need recover it.
         String[] keyvids;
         String delimeter = "@"; 
         keyvids = video_id.split(delimeter); 
         try {
         	for(int a=0; a<keyvids.length;a++) {
             connection = getConnection();
+            //search each video id through jdbc in database
             result=findNames(keyvids[a], connection);
             for(int i =0; i < result.size() ; i++){
                 String[] t;
                 t = result.get(i).split(delimeter); 
+                //save the info in json object which is in a row of search output
                 JSONObject singleJson = new JSONObject();
                 for(int j =0; j < t.length ; j++){
                     singleJson.put("video_id", t[0]);

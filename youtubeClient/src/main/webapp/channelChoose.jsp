@@ -15,6 +15,8 @@
 <title>ChooseChannel</title>
 </head>
 <script>
+//get the value of chosen checkbox
+//to know which channels the users are interested in
 function chk(){
     let obj=document.getElementsByName('cbx'); 
     let s='';
@@ -27,6 +29,8 @@ function chk(){
         		s+='@'+obj[i].value;
         	}
     } 
+    //set value for the hidden input
+    //send parameters with form
     let input = document.getElementById("hid");
     input.setAttribute("value", s);
     let a =input.getAttribute("value");
@@ -34,9 +38,10 @@ function chk(){
 
 </script>
 <body>
+<%-- title and reminder --%>
 	<h1>Channel List</h1>
 	<h2>Please choose your interested channels.</h2>
-
+<%-- Json array got with webservice--%>
 	<%
 	String ids = "";
 	String [] channelIds = {};
@@ -53,7 +58,7 @@ function chk(){
 			<td>Channel PIC</td>
 			<td>Channel Name</td>
 		</tr>
-			
+			<%--use for loop to show the info got by webservice in table --%>
 				<%
 				for (int i = 0; i < resultArray.length(); i++) {
 					JSONObject jsono = resultArray.getJSONObject(i);
@@ -103,11 +108,13 @@ function chk(){
 		<div id="submit">
 			<input type="submit" value="Submit" class="sub">
 		</div>
+		<%--use hidden input to send parameters with chosen channel --%>
 		<input type="hidden" name="idList" id="hid">
 		
 	</form>
 
 
+	<%-- the service request url is http://localhost:9998/webservice1one/videoid/{video_id} --%>
 	<%!static final String REST_URI = "http://localhost:9998/webservice1";
 	static final String QUERY_PATH = "one/videoid";
 
